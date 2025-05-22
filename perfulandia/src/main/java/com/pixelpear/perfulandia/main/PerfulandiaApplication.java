@@ -1,4 +1,4 @@
-package com.pixelpear.perfulandia;
+package com.pixelpear.perfulandia.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
