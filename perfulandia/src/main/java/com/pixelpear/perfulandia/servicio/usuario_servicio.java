@@ -1,5 +1,6 @@
 package com.pixelpear.perfulandia.servicio;
 
+import com.pixelpear.perfulandia.dto.usuario_DTO;
 import com.pixelpear.perfulandia.modelo.usuario;
 import com.pixelpear.perfulandia.repositorio.usuario_repositorio;
 
@@ -20,16 +21,21 @@ public class usuario_servicio {
             return usuarioRepositorio.findAll();
         }
 
-        public usuario guardarUsuario(usuario usuario_save){
-            return usuarioRepositorio.save(usuario_save);
+        public usuario guardarUsuarioDTO(usuario_DTO dto){
+            usuario usuario = new usuario();
+            usuario.setNombre(dto.getNombre());
+            usuario.setCorreo(dto.getCorreo());
+            usuario.setRol(dto.getRol());
+            usuario.setActivo(dto.getActivo());
+            return usuarioRepositorio.save(usuario);
         }
 
-        public usuario actualizarUsuario(Long id, usuario nuevoUsuario){
+        public usuario actualizarUsuario(Long id, usuario_DTO dto){
             return usuarioRepositorio.findById(id).map(usuario ->{
-                usuario.setNombre(nuevoUsuario.getNombre());
-                usuario.setCorreo(nuevoUsuario.getCorreo());
-                usuario.setRol(nuevoUsuario.getRol());
-                usuario.setActivo(nuevoUsuario.getActivo());
+                usuario.setNombre(dto.getNombre());
+                usuario.setCorreo(dto.getCorreo());
+                usuario.setRol(dto.getRol());
+                usuario.setActivo(dto.getActivo());
                 return usuarioRepositorio.save(usuario);
 
             }).orElse(null);

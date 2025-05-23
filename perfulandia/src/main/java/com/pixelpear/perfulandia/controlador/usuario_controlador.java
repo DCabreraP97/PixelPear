@@ -2,7 +2,10 @@ package com.pixelpear.perfulandia.controlador;
 
 import com.pixelpear.perfulandia.modelo.usuario;
 import com.pixelpear.perfulandia.servicio.usuario_servicio;
+import com.pixelpear.perfulandia.dto.usuario_DTO;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -21,13 +24,13 @@ public class usuario_controlador {
     }
 
     @PostMapping
-    public usuario crear(@RequestBody usuario usuario){
-        return usuarioService.guardarUsuario(usuario);
+    public usuario crear(@Valid @RequestBody usuario_DTO usuarioDTO){
+        return usuarioService.guardarUsuarioDTO(usuarioDTO);
     }
 
     @PutMapping("/{id}")
-    public usuario actualizar(@PathVariable Long id, @RequestBody usuario usuario){
-        return usuarioService.actualizarUsuario(id, usuario);
+    public usuario actualizar(@PathVariable Long id,@Valid @RequestBody usuario_DTO usuarioDTO){
+        return usuarioService.actualizarUsuario(id, usuarioDTO);
     }
 
     @DeleteMapping("/{id}")

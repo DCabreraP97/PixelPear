@@ -1,6 +1,7 @@
 package com.pixelpear.perfulandia.modelo;
 import jakarta.persistence.*;
-import lombok.Data.*;
+import lombok.Data;
+
 
 @Entity
 @Table(name = "usuarios")
