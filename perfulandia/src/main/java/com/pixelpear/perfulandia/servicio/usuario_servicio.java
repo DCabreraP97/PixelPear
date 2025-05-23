@@ -20,7 +20,23 @@ public class usuario_servicio {
             return usuarioRepositorio.findAll();
         }
 
-        
+        public usuario guardarUsuario(usuario usuario_save){
+            return usuarioRepositorio.save(usuario_save);
+        }
 
+        public usuario actualizarUsuario(Long id, usuario nuevoUsuario){
+            return usuarioRepositorio.findById(id).map(usuario ->{
+                usuario.setNombre(nuevoUsuario.getNombre());
+                usuario.setCorreo(nuevoUsuario.getCorreo());
+                usuario.setRol(nuevoUsuario.getRol());
+                usuario.setActivo(nuevoUsuario.getActivo());
+                return usuarioRepositorio.save(usuario);
+
+            }).orElse(null);
+        }
+
+        public void eliminarUsuario(Long id){
+            usuarioRepositorio.deleteById(id);
+        }
 
 }
