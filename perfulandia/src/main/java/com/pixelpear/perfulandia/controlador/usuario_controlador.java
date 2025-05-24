@@ -31,16 +31,16 @@ public class usuario_controlador {
         return usuarioService.guardarUsuarioDTO(usuarioDTO);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/actualizar/{id}")
     public usuario actualizar(@PathVariable Long id,@Valid @RequestBody usuario_DTO usuarioDTO){
         return usuarioService.actualizarUsuario(id, usuarioDTO);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public void eliminar(@PathVariable Long id){
         usuarioService.eliminarUsuario(id);
     }
-
+    //para probar la conexion
     @GetMapping("/ping")
     public String ping() {
         return "pong";
